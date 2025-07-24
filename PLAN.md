@@ -1,3 +1,5 @@
+All estimated times may vary depending on the scope of the project.
+
 # 📌 Worklog Summary Card – Planning Document
 
 ## 🧱 Task Breakdown
