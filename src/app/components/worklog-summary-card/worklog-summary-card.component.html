@@ -1,0 +1,95 @@
+<article 
+  class="worklog-card"
+  [ngClass]="getCardBorderClasses()"
+  role="article"
+  [attr.aria-label]="'Worklog summary for ' + worklogData.user.name"
+>
+  <!-- Header with user info -->
+  <header class="flex items-start justify-between mb-4">
+    <div class="flex items-center space-x-3">
+      <!-- Avatar with fallback -->
+      <div class="relative w-12 h-12 flex-shrink-0">
+        <img
+          *ngIf="worklogData.user.avatarUrl"
+          [src]="worklogData.user.avatarUrl"
+          [alt]="worklogData.user.name + ' avatar'"
+          class="w-12 h-12 rounded-full object-cover border-2 border-white dark:border-gray-700 shadow-sm"
+          (error)="onAvatarError($event)"
+        />
+        
+        <!-- Fallback initials -->
+        <div 
+          class="avatar-fallback"
+          [style.display]="worklogData.user.avatarUrl ? 'none' : 'flex'"
+        >
+          {{ getUserInitials() }}
+        </div>
+      </div>
+
+      <!-- User name and role -->
+      <div class="min-w-0 flex-1">
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white truncate">
+          {{ worklogData.user.name }}
+        </h3>
+        <div class="flex items-center space-x-2 mt-1">
+          <span [ngClass]="getRoleClasses()">
+            <i [attr.data-feather]="getRoleIcon()" class="w-3 h-3"></i>
+            <span class="capitalize">{{ worklogData.user.role }}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Worklog metrics -->
+  <div class="space-y-3 mb-4">
+    <!-- Week info -->
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-medium text-gray-600 dark:text-gray-300">
+        {{ getFormattedWeek() }}
+      </span>
+      <span class="text-sm text-gray-500 dark:text-gray-400">
+        {{ worklogData.week }}
+      </span>
+    </div>
+
+    <!-- Hours -->
+    <div class="flex items-center justify-between">
+      <span class="text-sm text-gray-600 dark:text-gray-300">
+        Total Hours
+      </span>
+      <span class="text-lg font-bold text-gray-900 dark:text-white">
+        {{ worklogData.totalHours }}h
+      </span>
+    </div>
+
+    <!-- Project -->
+    <div class="pt-2 border-t border-gray-100 dark:border-gray-700">
+      <span class="text-sm text-gray-500 dark:text-gray-400">Project</span>
+      <p class="text-sm font-medium text-gray-900 dark:text-white mt-1 line-clamp-2">
+        {{ worklogData.projectName }}
+      </p>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <footer class="pt-4 border-t border-gray-100 dark:border-gray-700">
+    <button
+      *ngIf="worklogData.canViewDetails"
+      (click)="onViewDetails()"
+      class="view-details-btn"
+      type="button"
+      [attr.aria-label]="'View details for ' + worklogData.user.name + ' worklog'"
+    >
+      <i data-feather="eye" class="w-4 h-4"></i>
+      <span>View Details</span>
+    </button>
+    
+    <div 
+      *ngIf="!worklogData.canViewDetails"
+      class="text-sm text-gray-400 dark:text-gray-500 italic"
+    >
+      Details not available
+    </div>
+  </footer>
+</article>

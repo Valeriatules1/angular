@@ -1,0 +1,85 @@
+Recruitment Assignment – Angular + Tailwind CSS
+A short, realistic task to verify how you think, code, and work.
+
+
+🧭 Context
+You’ll implement a component similar to what we use in our ERP system. It must be clean, modular, responsive, and built using Angular + Tailwind CSS only (no UI libraries). We want to observe your process, not just the final result.
+
+
+🔹 STEP 1: Planning (before coding)
+Please provide a short plan in Markdown or plain text with:
+• A breakdown of the task into clear steps (e.g. structure, inputs, styling, responsiveness, role handling),
+• Time estimation for each step (rough guesses are fine),
+• A short note about your styling strategy (Tailwind approach, @apply, ngClass, responsive layout, dark mode, etc.),
+• Anything you intend to optimize or simplify.
+
+
+You can commit this as PLAN.md or include it in your first commit.
+
+
+⚠️ Do not start coding until this plan is committed.
+
+
+🔹 STEP 2: Component Implementation
+✨ Component: <worklog-summary-card>
+
+
+export interface WorkLogSummary {
+user: {
+name: string;
+avatarUrl?: string;
+role: 'admin' | 'manager' | 'employee';
+};
+week: string; e.g. "2025-W28"
+totalHours: number;
+projectName: string;
+canViewDetails: boolean;
+}
+
+
+Requirements:
+• Use Angular 16+ (Standalone Components allowed).
+• Style everything with Tailwind CSS only – no UI libraries.
+• Make it fully responsive (mobile + desktop).
+• Show “View Details” button only if canViewDetails === true – with hover/focus styles.
+• Handle missing avatarUrl gracefully.
+• Use role-based styling (e.g. admin highlighted differently).
+• Use semantic, accessible HTML.
+
+
+🔁 Commit Process (important!)
+Please commit regularly, at each meaningful step:
+• Each step from your plan should result in one or more commits.
+• Use clear commit messages (e.g. “Add layout skeleton”, “Style role badge”).
+• Avoid catch-all commits like “fixes” or “final”.
+
+
+We want to observe your progress – not just the result.
+
+
+🌓 Bonus (optional)
+• Add support for dark mode using Tailwind dark: variants.
+• Use @apply to simplify repetitive utility classes.
+• Use ngClass for role-conditional or responsive styling.
+• Add a preview wrapper (e.g. 2–3 dummy cards).
+
+
+🧪 What we evaluate
+Tailwind usage & styling clarity – ★★★★☆
+Responsive layout – ★★★★☆
+Angular structure & inputs – ★★★☆☆
+Use of nested data & conditionals – ★★★☆☆
+Planning + commit transparency – ★★★★☆
+
+
+📤 Submission
+• Please share a GitHub repo (strongly preferred) or .zip if needed.
+• Include:
+- your initial PLAN (PLAN.md or first commit),
+- your commit history,
+- a short README.md with:
+• how to run (npm install && ng serve),
+• any notes, decisions or assumptions.
+
+
+Let me know if you have any questions before starting. We’re looking forward to your plan and progress!
